@@ -1,0 +1,18 @@
+# Normalize line endings to LF in the repository and working tree
+* text=auto eol=lf
+
+*.py text diff=python
+*.md text diff=markdown
+*.toml text
+*.sql text
+Makefile text
+
+# Windows scripts keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.db binary
