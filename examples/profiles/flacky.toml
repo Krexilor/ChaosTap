@@ -1,0 +1,18 @@
+# Occasional slowness, dropped connections and 503 responses.
+# Rules without a [rules.match] table apply to all traffic.
+seed = 42
+
+[[rules]]
+name = "flaky-backend"
+
+[rules.latency]
+delay_ms = 100
+jitter_ms = 150
+probability = 0.5
+
+[rules.drop]
+probability = 0.05
+
+[rules.error]
+status = 503
+probability = 0.1
