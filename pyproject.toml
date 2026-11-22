@@ -61,39 +61,6 @@ packages = ["src/chaostap"]
 [tool.hatch.build.targets.sdist]
 include = ["src/chaostap", "tests", "docs", "examples", "README.md", "LICENSE"]
 
-# Ruff ---------------------------------------------------------------------------------------------------------------------------------------------|
-[tool.ruff]
-line-length = 100
-target-version = "py311"
-src = ["src", "tests"]
-
-[tool.ruff.lint]
-select = [
-    "E", "W",   # pycodestyle
-    "F",        # pyflakes
-    "I",        # isort
-    "B",        # bugbear
-    "UP",       # pyupgrade
-    "SIM",      # simplify
-    "C4",       # comprehensions
-    "ASYNC",    # async pitfalls
-    "S",        # bandit (security)
-    "PT",       # pytest style
-    "RUF"       # ruff-specific
-]
-
-[tool.ruff.lint.pycodestyle]
-max-line-length = 150
-
-[tool.ruff.lint.isort]
-lines-after-imports = 1
-
-[tool.ruff.lint.per-file-ignores]
-"src/chaostap/faults/engine.py" = ["S311"]
-"tests/**" = ["S101", "S104"]
-"benchmarks/**" = ["S101", "S104"]
-"examples/**" = ["S104"]
-
 # Mypy ---------------------------------------------------------------------------------------------------------------------------------------------|
 [tool.mypy]
 python_version = "3.11"
