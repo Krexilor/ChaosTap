@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
-.PHONY: help venv install run lint format typecheck test test-unit \
-        test-integration cov bench build check clean
+.PHONY: help venv install run typecheck test test-unit \
+	test-integration cov bench build check clean
 
 # Environment & Platform Configuration
 ifeq ($(OS),Windows_NT)
@@ -36,14 +36,6 @@ install: venv
 run:
 	$(PY) -m chaostap --profile $(PROFILE)
 
-## Run static linting checks
-lint:
-	$(PY) -m ruff check .
-
-## Automatically fix lint issues (import spacing etc.), without reformatting code
-format:
-	$(PY) -m ruff check --fix .
-
 ## Run strict static type checking via mypy
 typecheck:
 	$(PY) -m mypy
@@ -74,11 +66,11 @@ build:
 	$(PY) -m build
 
 ## Run full CI validation pipeline (lint, typecheck, and tests)
-check: lint typecheck test
+check: typecheck test
 
 ## Remove build artifacts, caches, coverage reports, and local SQLite DBs
 clean:
-	rm -rf build dist htmlcov .coverage .pytest_cache .mypy_cache .ruff_cache
+	rm -rf build dist htmlcov .coverage .pytest_cache .mypy_cache
 	rm -rf src/*.egg-info
 	find . -type d -name __pycache__ -not -path "./.venv/*" -prune -exec rm -rf {} +
 	rm -f *.db *.db-wal *.db-shm
