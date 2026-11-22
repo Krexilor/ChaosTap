@@ -36,15 +36,13 @@ install: venv
 run:
 	$(PY) -m chaostap --profile $(PROFILE)
 
-## Run static linting and formatting checks
+## Run static linting checks
 lint:
 	$(PY) -m ruff check .
-	$(PY) -m ruff format --check .
 
-## Automatically fix lint issues and format codebase
+## Automatically fix lint issues (import spacing etc.), without reformatting code
 format:
 	$(PY) -m ruff check --fix .
-	$(PY) -m ruff format .
 
 ## Run strict static type checking via mypy
 typecheck:

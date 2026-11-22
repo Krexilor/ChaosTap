@@ -58,10 +58,10 @@ async def test_chunk_larger_than_the_burst_waits_for_the_excess() -> None:
 async def test_sustained_throughput_matches_the_rate() -> None:
     fake = FakeTime()
     bucket = _bucket(fake)
-    
+
     for _ in range(10):
         await bucket.consume(100)
-        
+
     assert fake.now == pytest.approx(9.0)
 
 async def test_zero_bytes_never_waits() -> None:

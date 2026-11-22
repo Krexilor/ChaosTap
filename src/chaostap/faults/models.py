@@ -13,12 +13,12 @@ class LatencyFault(_Spec):
 
 # Close the connection abruptly.
 class DropFault(_Spec):
-    probility: float = Field(default = 1.0, ge = 0, le = 1)
+    probability: float = Field(default = 1.0, ge = 0, le = 1)
 
-# Answer with a synthetic 5xx response (hhtp mode only).
+# Answer with a synthetic 5xx response (http mode only).
 class ErrorFault(_Spec):
     status: int = Field(default = 503, ge = 500, le = 599)
-    probability: float = Field(deafult = 1.0, ge = 0, le = 1)
+    probability: float = Field(default = 1.0, ge = 0, le = 1)
 
 # Limit throughput per connection with a token bucket.
 class ThrottleFault(_Spec):

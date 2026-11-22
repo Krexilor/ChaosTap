@@ -3,7 +3,15 @@ import pytest
 from pydantic import ValidationError
 
 # PROJECT IMPORTS ----------------------------------------------------------------------------------------------------------------------------------|
-from chaostap.faults.models import DropFault, ErrorFault, FaultProfile, FaultRule, LatencyFault, Match, ThrottleFault
+from chaostap.faults.models import (
+    DropFault,
+    ErrorFault,
+    FaultProfile,
+    FaultRule,
+    LatencyFault,
+    Match,
+    ThrottleFault,
+)
 
 # FAULT SPECS --------------------------------------------------------------------------------------------------------------------------------------|
 @pytest.mark.parametrize("probability", [-0.1, 1.1])

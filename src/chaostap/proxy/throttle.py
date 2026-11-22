@@ -50,7 +50,7 @@ class TokenBucket:
         if self._tokens < 0:
             await self._sleep(-self._tokens / self._rate)
 
-    def _reffil(self) -> None:
+    def _refill(self) -> None:
         now = self._clock()
         elapsed = now - self._last
         self._last = now

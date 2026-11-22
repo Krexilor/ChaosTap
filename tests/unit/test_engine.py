@@ -3,7 +3,15 @@ import pytest
 
 # PROJECT IMPORTS ----------------------------------------------------------------------------------------------------------------------------------|
 from chaostap.faults.engine import ConnectionFaults, Decision, FaultEngine, RequestInfo
-from chaostap.faults.models import DropFault, ErrorFault, FaultProfile, FaultRule, LatencyFault, Match, ThrottleFault
+from chaostap.faults.models import (
+    DropFault,
+    ErrorFault,
+    FaultProfile,
+    FaultRule,
+    LatencyFault,
+    Match,
+    ThrottleFault,
+)
 
 # HELPERS ------------------------------------------------------------------------------------------------------------------------------------------|
 GET_ROOT = RequestInfo("GET", "/")
@@ -125,7 +133,7 @@ def test_decisions_do_not_depend_on_other_connections() -> None:
     first, second = engine.for_connection(1), engine.for_connection(2)
     from_first: list[Decision] = []
     from_second: list[Decision] = []
-    
+
     for _ in range(30):
         from_first.append(first.decide(GET_ROOT))
         from_second.append(second.decide(GET_ROOT))
